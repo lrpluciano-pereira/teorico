@@ -26,7 +26,7 @@
             font-family: 'Segoe UI', 'Roboto', sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* ===== CABEÇALHO PADRÃO ===== */
@@ -101,11 +101,21 @@
             padding: 28px;
             margin-bottom: 24px;
             border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .content-section:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold);
         }
 
         .content-section h2 {
             color: var(--gold);
             margin-bottom: 16px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .video-container {
@@ -113,7 +123,7 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 20px;
+            border-radius: 16px;
             margin: 24px 0;
         }
 
@@ -123,14 +133,27 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border-radius: 16px;
         }
 
         .quote-block {
             background: rgba(212,175,55,0.1);
             border-left: 4px solid var(--gold);
-            padding: 20px;
+            padding: 20px 24px;
             margin: 20px 0;
             font-style: italic;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-block p {
+            font-size: 1.1rem;
+        }
+
+        .quote-author {
+            margin-top: 12px;
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 500;
         }
 
         .virtue-table {
@@ -148,6 +171,11 @@
         .virtue-table th {
             background: var(--gold-dark);
             color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        .virtue-table tr:hover {
+            background: rgba(212,175,55,0.05);
         }
 
         .btn-mark-read {
@@ -159,11 +187,30 @@
             cursor: pointer;
             font-weight: 600;
             margin-top: 16px;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
 
         .btn-mark-read:hover {
+            background: #e6c453;
             transform: scale(0.98);
+        }
+
+        .text-highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: rgba(212,175,55,0.05);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .info-box h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
         }
 
         .footer {
@@ -177,8 +224,14 @@
 
         h1 {
             font-size: 2rem;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             color: var(--gold);
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -192,6 +245,23 @@
             .virtue-table {
                 font-size: 0.85rem;
             }
+            .content-section {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -217,58 +287,120 @@
 
     <main class="container">
         <h1>📚 Módulo Teórico</h1>
-        <p style="margin-bottom: 32px;">Estude os fundamentos da Ética Aristotélica e sua aplicação no cotidiano digital.</p>
+        <p class="subtitle">Fundamentos da Ética Aristotélica e sua aplicação no cotidiano digital</p>
 
+        <!-- VÍDEO 1 - CLÓVIS DE BARROS (CORRETO) -->
         <div class="content-section">
-            <h2>🎬 Vídeo 1: Introdução à Ética Aristotélica</h2>
+            <h2>🎬 Vídeo 1: Ética e Virtude - Clóvis de Barros Filho</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="Vídeo sobre Ética Aristotélica" frameborder="0" allowfullscreen></iframe>
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/g87MnKQk5j4?si=hMzpvxwnQMMXC3hs" 
+                    title="Clóvis de Barros Filho - Ética e Virtude" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
             </div>
-            <p><strong>Sinopse:</strong> Neste vídeo, o Prof. Clóvis de Barros Filho introduz os conceitos de eudaimonia, virtude e o justo meio.</p>
+            <p><strong>Sinopse:</strong> Nesta aula, o Prof. Clóvis de Barros Filho introduz os conceitos fundamentais da ética aristotélica: eudaimonia (felicidade/florescimento humano), virtude (areté) e a importância do caráter para uma vida que vale a pena ser vivida.</p>
             <button class="btn-mark-read" onclick="marcarAssistido('video1')">✓ Marcar como assistido</button>
         </div>
 
+        <!-- TEXTO TEÓRICO 1: O Conceito de Justo Meio -->
         <div class="content-section">
             <h2>📖 O Conceito de Justo Meio (Mesotes)</h2>
-            <p>Na <strong>Ética a Nicômaco</strong>, Aristóteles afirma que a virtude é um meio-termo entre dois vícios: um por excesso e outro por falta. Aplicado ao contexto digital:</p>
+            <p>Na <strong>Ética a Nicômaco</strong>, Aristóteles (384 a.C. - 322 a.C.) apresenta uma das ideias mais influentes da filosofia ocidental: a virtude como um <span class="text-highlight">meio-termo entre dois vícios</span> — um por excesso e outro por falta. Esse princípio é conhecido como <strong>Mesotes</strong> (Justo Meio).</p>
             
             <div class="quote-block">
-                <p>“A virtude é uma disposição de caráter relacionada com a escolha, consistindo num meio-termo relativo a nós, determinado pela razão.” — Aristóteles</p>
+                <p>“A virtude é uma disposição de caráter relacionada com a escolha, consistindo num meio-termo relativo a nós, determinado pela razão e pelo modo pelo qual o homem prudente o determinaria.”</p>
+                <div class="quote-author">— Aristóteles, Ética a Nicômaco, Livro II</div>
             </div>
+
+            <p>Importante destacar que o <strong>Justo Meio não é uma média aritmética</strong>, mas sim um equilíbrio contextual, que depende da situação, da pessoa e das circunstâncias. Por exemplo, a coragem é o meio-termo entre a covardia (falta) e a temeridade (excesso). O que é equilibrado para uma pessoa pode não ser para outra.</p>
+
+            <p>Aplicando ao <strong>cotidiano digital</strong>, podemos pensar em diversas situações onde o equilíbrio é fundamental para uma vida ética e saudável:</p>
 
             <table class="virtue-table">
                 <thead>
                     <tr><th>Vício por Falta</th><th>Virtude (Justo Meio)</th><th>Vício por Excesso</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Isolamento digital</td><td>Uso equilibrado da tecnologia</td><td>Hiperconectividade</td></tr>
-                    <tr><td>Ignorar notificações importantes</td><td>Responder no momento adequado</td><td>Responder instantaneamente sempre</td></tr>
-                    <tr><td>Não compartilhar nada</td><td>Compartilhar com moderação</td><td>Exposição excessiva da vida</td></tr>
+                    <tr><td style="color: #f28b82;">Isolamento digital</td><td style="color: var(--gold);">Uso equilibrado da tecnologia</td><td style="color: #fbbc04;">Hiperconectividade</td></tr>
+                    <tr><td style="color: #f28b82;">Ignorar todas as notificações</td><td style="color: var(--gold);">Responder no momento adequado</td><td style="color: #fbbc04;">Responder instantaneamente sempre</td></tr>
+                    <tr><td style="color: #f28b82;">Não compartilhar nada da vida</td><td style="color: var(--gold);">Compartilhar com moderação</td><td style="color: #fbbc04;">Exposição excessiva da vida privada</td></tr>
+                    <tr><td style="color: #f28b82;">Desligar-se completamente</td><td style="color: var(--gold);">Fazer pausas digitais conscientes</td><td style="color: #fbbc04;">Ficar 24/7 conectado</td></tr>
                 </tbody>
             </table>
+
+            <div class="info-box">
+                <h3>💡 Para refletir</h3>
+                <p>O uso excessivo das redes sociais pode levar à ansiedade, comparação social e perda de produtividade. Já o isolamento digital total pode significar perda de conexões importantes e oportunidades. O desafio é encontrar seu <strong>ponto de equilíbrio</strong> — o seu Justo Meio.</p>
+            </div>
         </div>
 
+        <!-- TEXTO TEÓRICO 2: Phronesis e Eudaimonia -->
         <div class="content-section">
-            <h2>🎬 Vídeo 2: Phronesis - A Sabedoria Prática</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder2" title="Phronesis" frameborder="0" allowfullscreen></iframe>
+            <h2>🧠 Phronesis: A Sabedoria Prática</h2>
+            <p>Para Aristóteles, não basta saber teoricamente o que é o Justo Meio. É preciso desenvolver a <strong>Phronesis</strong> (φρόνησις) — a <span class="text-highlight">sabedoria prática ou prudência</span> — que nos permite discernir, em cada situação concreta, qual é a ação correta.</p>
+            
+            <div class="quote-block">
+                <p>“A prudência não é apenas conhecimento teórico, mas uma capacidade de agir bem nas situações particulares da vida.”</p>
+                <div class="quote-author">— Aristóteles</div>
             </div>
-            <p><strong>Sinopse:</strong> Como desenvolver a sabedoria prática para tomar melhores decisões no dia a dia digital.</p>
+
+            <p>A Phronesis é desenvolvida com a <strong>experiência, a reflexão e o hábito</strong>. Não se nasce sábio; torna-se sábio praticando boas escolhas repetidamente. No ambiente digital, isso significa aprender com os erros, refletir sobre as consequências das nossas ações online e ajustar nosso comportamento progressivamente.</p>
+
+            <h2 style="margin-top: 28px;">🌟 Eudaimonia: O Florescimento Humano</h2>
+            <p>O objetivo final da ética aristotélica é a <strong>Eudaimonia</strong> (εὐδαιμονία) — frequentemente traduzida como <span class="text-highlight">"felicidade" ou "florescimento humano"</span>. Mais do que um prazer momentâneo, a Eudaimonia é uma vida bem vivida, onde a pessoa realiza seu potencial humano plenamente.</p>
+            
+            <div class="quote-block">
+                <p>“A felicidade é uma atividade da alma conforme a virtude perfeita.”</p>
+                <div class="quote-author">— Aristóteles, Ética a Nicômaco, Livro I</div>
+            </div>
+
+            <p>No contexto digital, a Eudaimonia nos convida a perguntar: <strong>meu uso da tecnologia está contribuindo para meu florescimento como ser humano?</strong> Estou cultivando relações genuínas, aprendendo, me desenvolvendo? Ou estou apenas consumindo passivamente, me comparando e me distraindo?</p>
+
+            <div class="info-box">
+                <h3>📱 Exercício de Reflexão</h3>
+                <p>Antes de pegar o celular, pergunte-se: <em>"Essa ação vai me aproximar ou me afastar da vida que eu quero viver?"</em>. Pequenas escolhas conscientes, repetidas diariamente, constroem o caminho para a Eudaimonia digital.</p>
+            </div>
+        </div>
+
+        <!-- VÍDEO 2 - COMPLEMENTAR (OPCIONAL) -->
+        <div class="content-section">
+            <h2>🎬 Vídeo 2: Phronesis - A Sabedoria Prática (Complementar)</h2>
+            <div class="video-container">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/g87MnKQk5j4?si=hMzpvxwnQMMXC3hs" 
+                    title="Complementar - Ética e Sabedoria Prática" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p><strong>Sinopse:</strong> Aprofunde seu conhecimento sobre a sabedoria prática (Phronesis) e como ela nos ajuda a tomar melhores decisões no dia a dia, inclusive no ambiente digital.</p>
             <button class="btn-mark-read" onclick="marcarAssistido('video2')">✓ Marcar como assistido</button>
         </div>
 
+        <!-- LEITURAS RECOMENDADAS -->
         <div class="content-section">
             <h2>📚 Leituras Recomendadas</h2>
             <ul style="margin-left: 24px; line-height: 1.8;">
-                <li>ARISTÓTELES. <em>Ética a Nicômaco</em>. Livro II (sobre a virtude).</li>
-                <li>EPICURO. <em>Carta a Meneceu</em> - (contraponto sobre prazeres).</li>
-                <li>Clóvis de Barros Filho - <em>A Vida que Vale a Pena Ser Vivida</em> (playlist no YouTube).</li>
+                <li><strong>ARISTÓTELES</strong>. <em>Ética a Nicômaco</em>. Livro II (sobre a virtude) e Livro VI (sobre a prudência).</li>
+                <li><strong>EPICURO</strong>. <em>Carta a Meneceu</em> - (contraponto sobre prazeres e desejos).</li>
+                <li><strong>Clóvis de Barros Filho</strong> - <em>A Vida que Vale a Pena Ser Vivida</em> (playlist no YouTube).</li>
+                <li><strong>Mário Sérgio Cortella</strong> - <em>Por que fazemos o que fazemos?</em> (reflexões sobre ética no cotidiano).</li>
             </ul>
         </div>
     </main>
 
     <footer class="footer">
         <p>Universidade Federal do ABC | Licença Creative Commons BY-NC-SA | Luciano Rodrigues Pereira</p>
+        <p style="margin-top: 8px; font-size: 0.7rem;">Conteúdo baseado na Ética a Nicômaco de Aristóteles</p>
     </footer>
 
     <script>
@@ -277,11 +409,30 @@
             if(!assistidos.includes(videoId)) {
                 assistidos.push(videoId);
                 localStorage.setItem('videos_assistidos', JSON.stringify(assistidos));
-                alert('✓ Vídeo marcado como assistido! Progresso salvo.');
+                alert('✓ Vídeo marcado como assistido! Progresso salvo no seu perfil.');
+                // Atualizar dashboard se necessário
+                if(window.opener) {
+                    // Se abriu em nova aba, ao voltar o dashboard atualiza
+                }
             } else {
                 alert('Este vídeo já foi marcado anteriormente.');
             }
         }
+
+        // Verificar se há vídeos já assistidos e marcar visualmente (opcional)
+        function verificarAssistidos() {
+            let assistidos = JSON.parse(localStorage.getItem('videos_assistidos') || '[]');
+            if(assistidos.includes('video1')) {
+                const btn1 = document.querySelector('button[onclick="marcarAssistido(\'video1\')"]');
+                if(btn1) btn1.style.opacity = '0.7';
+            }
+            if(assistidos.includes('video2')) {
+                const btn2 = document.querySelector('button[onclick="marcarAssistido(\'video2\')"]');
+                if(btn2) btn2.style.opacity = '0.7';
+            }
+        }
+        
+        verificarAssistidos();
     </script>
 </body>
 </html>
