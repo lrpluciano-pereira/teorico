@@ -20,7 +20,7 @@
             --text-primary: #ffffff;
             --text-secondary: #9aa7b9;
             --border: #1e2a44;
-            --highlight: #2ecc71;
+            --success: #2ecc71;
             --link: #66c0ff;
         }
 
@@ -31,7 +31,6 @@
             line-height: 1.6;
         }
 
-        /* CABEÇALHO PADRÃO */
         .navbar {
             background: var(--bg-card);
             border-bottom: 1px solid var(--border);
@@ -91,7 +90,6 @@
             font-weight: bold;
         }
 
-        /* CONTEÚDO */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -99,7 +97,6 @@
             min-height: calc(100vh - 160px);
         }
 
-        /* Índice / Sumário */
         .toc {
             background: var(--bg-card);
             border-radius: 20px;
@@ -216,31 +213,36 @@
             color: var(--bg-dark);
         }
 
+        /* BOTÕES MELHORADOS - SEMPRE VISÍVEIS */
         .btn-mark-read {
             background: var(--gold);
             color: var(--bg-dark);
             border: none;
-            padding: 10px 24px;
+            padding: 12px 24px;
             border-radius: 40px;
             cursor: pointer;
             font-weight: 600;
             margin-top: 16px;
             transition: all 0.2s;
-        }
-
-        .btn-mark-read.completed {
-            background: var(--success);
-            opacity: 0.7;
-            cursor: default;
-        }
-
-        .btn-mark-read.completed:hover {
-            transform: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-mark-read:hover:not(.completed) {
             background: #e6c453;
             transform: scale(0.98);
+        }
+
+        .btn-mark-read.completed {
+            background: var(--success);
+            color: var(--bg-dark);
+            opacity: 0.8;
+            cursor: default;
+        }
+
+        .btn-mark-read.completed:hover {
+            transform: none;
         }
 
         .text-highlight {
@@ -261,7 +263,7 @@
 
         .info-box-green {
             background: rgba(46, 204, 113, 0.08);
-            border: 1px solid var(--highlight);
+            border: 1px solid var(--success);
         }
 
         .info-box h3, .info-box-green h3 {
@@ -297,6 +299,7 @@
         .progress-videos span {
             color: var(--gold);
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .footer {
@@ -354,7 +357,6 @@
     </style>
 </head>
 <body>
-    <!-- CABEÇALHO PADRÃO -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="https://lrpluciano-pereira.github.io/index/" class="logo">
@@ -378,7 +380,6 @@
         <h1>📚 Módulo Teórico</h1>
         <p class="subtitle">Uma jornada pela Ética Ocidental: de Sócrates à Modernidade, aplicada ao cotidiano digital</p>
 
-        <!-- SUMÁRIO / ÍNDICE -->
         <div class="toc">
             <h3>📑 Navegue pelo conteúdo</h3>
             <div class="toc-grid">
@@ -395,9 +396,7 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 1: VÍDEO PRINCIPAL - CLÓVIS (ÉTICA E VIRTUDE) -->
-        <!-- ============================================ -->
+        <!-- VÍDEO PRINCIPAL -->
         <div class="content-section" id="video-principal">
             <h2>🎬 Vídeo Principal <span class="topic-badge">Clóvis de Barros Filho</span></h2>
             <p><strong>Ética e Virtude - Clóvis de Barros Filho</strong></p>
@@ -414,12 +413,10 @@
                 </iframe>
             </div>
             <p><strong>Sinopse:</strong> Nesta aula, o Prof. Clóvis de Barros Filho introduz os conceitos fundamentais da ética aristotélica: eudaimonia (felicidade/florescimento humano), virtude (areté) e a importância do caráter para uma vida que vale a pena ser vivida.</p>
-            <button class="btn-mark-read" id="btnVideo1" data-video="video1" onclick="marcarAssistido('video1')">✓ Marcar como assistido</button>
+            <button class="btn-mark-read" id="btnVideo1" data-video="video1" onclick="marcarAssistido('video1')">📌 Marcar como assistido</button>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 2: VÍDEOS COMPLEMENTARES -->
-        <!-- ============================================ -->
+        <!-- VÍDEOS COMPLEMENTARES -->
         <div class="content-section" id="videos-complementares">
             <h2>🎬 Vídeos Complementares <span class="topic-badge">Clóvis de Barros Filho</span></h2>
             
@@ -436,7 +433,7 @@
                 </iframe>
             </div>
             <p><strong>Sinopse:</strong> Nesta aula, o Prof. Clóvis apresenta a filosofia moral grega: a maiêutica socrática, a teoria das ideias de Platão e a ética das virtudes de Aristóteles.</p>
-            <button class="btn-mark-read" id="btnVideo2" data-video="video2" onclick="marcarAssistido('video2')">✓ Marcar como assistido</button>
+            <button class="btn-mark-read" id="btnVideo2" data-video="video2" onclick="marcarAssistido('video2')">📌 Marcar como assistido</button>
 
             <h3 style="margin-top: 32px;">Aula 03 - Epicurismo e Estoicismo</h3>
             <div class="video-container">
@@ -451,17 +448,14 @@
                 </iframe>
             </div>
             <p><strong>Sinopse:</strong> Epicurismo e estoicismo: duas escolas helenísticas que oferecem caminhos distintos para a felicidade e a tranquilidade da alma.</p>
-            <button class="btn-mark-read" id="btnVideo3" data-video="video3" onclick="marcarAssistido('video3')">✓ Marcar como assistido</button>
+            <button class="btn-mark-read" id="btnVideo3" data-video="video3" onclick="marcarAssistido('video3')">📌 Marcar como assistido</button>
 
-            <!-- Barra de progresso dos vídeos -->
             <div class="progress-videos">
                 📊 <strong>Seu progresso:</strong> <span id="videosProgress">0</span> de 3 vídeos assistidos
             </div>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 3: SÓCRATES -->
-        <!-- ============================================ -->
+        <!-- SÓCRATES -->
         <div class="content-section" id="socrates">
             <h2>🏛️ Sócrates (470-399 a.C.) <span class="topic-badge">O pai da filosofia moral</span></h2>
             <p>"<strong>Conhece-te a ti mesmo</strong>" e "<strong>Sei que nada sei</strong>" são as duas expressões que marcam o pensamento socrático. Com elas, o homem, a ética e o conhecimento surgem como as questões centrais da filosofia.</p>
@@ -477,13 +471,9 @@
                 <h3>💡 Método Socrático</h3>
                 <p>Sócrates não se apresentava como professor. Perguntava, não respondia. Introduziu o <strong>diálogo</strong> como forma de busca da verdade, utilizando a <strong>ironia</strong> (fazer o interlocutor reconhecer sua ignorância) e a <strong>maiêutica</strong> (arte de "dar à luz" ideias verdadeiras).</p>
             </div>
-
-            <p><strong>Diferença entre Sócrates e os Sofistas:</strong> Enquanto os sofistas eram céticos e ensinavam técnicas de persuasão mediante pagamento, Sócrates acreditava na existência da verdade e a buscava gratuitamente, em diálogo aberto com todos, incluindo escravos e mulheres — o que era revolucionário para a época.</p>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 4: ARISTÓTELES -->
-        <!-- ============================================ -->
+        <!-- ARISTÓTELES -->
         <div class="content-section" id="aristoteles">
             <h2>📖 Aristóteles (384-322 a.C.) <span class="topic-badge">Ética das Virtudes</span></h2>
             <p>Para o Estagirita, a <strong>felicidade (Eudaimonía)</strong> é o bem supremo. A felicidade não é um estado subjetivo, mas uma <strong>atividade da alma conforme a virtude</strong>, realizada ao longo de toda a vida.</p>
@@ -492,18 +482,9 @@
                 <p>"A virtude é uma disposição de caráter relacionada com a escolha, consistindo num meio-termo relativo a nós, determinado pela razão."</p>
                 <div class="quote-author">— Aristóteles, Ética a Nicômaco, Livro II</div>
             </div>
-
-            <p>O filósofo critica o intelectualismo extremo de Sócrates, que reduzia a virtude ao conhecimento. Para Aristóteles, as <strong>emoções</strong> e o <strong>caráter</strong> são igualmente fundamentais. Como ele mesmo escreve na <em>Ética a Nicômaco</em>:</p>
-            
-            <div class="quote-block">
-                <p>"Não é saber o que é a coragem que desejamos, mas ser corajoso, nem o que é a justiça, mas ser justos, assim como preferimos estar com saúde a conhecer a natureza da saúde."</p>
-                <div class="quote-author">— Aristóteles, Ética a Nicômaco I 5, 1216b22-27</div>
-            </div>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 5: JUSTO MEIO (MESOTES) -->
-        <!-- ============================================ -->
+        <!-- JUSTO MEIO -->
         <div class="content-section" id="justo-meio">
             <h2>⚖️ O Justo Meio (Mesotes) <span class="topic-badge">Conceito central</span></h2>
             <p>O vício é sempre <strong>excesso ou falta</strong> entre dois pontos extremos. A virtude é a <span class="text-highlight">medida entre os extremos</span>, o equilíbrio, o justo meio.</p>
@@ -526,129 +507,86 @@
             </div>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 6: EPICURO -->
-        <!-- ============================================ -->
+        <!-- EPICURO -->
         <div class="content-section" id="epicuro">
             <h2>🍃 Epicuro (341-271 a.C.) <span class="topic-badge">O Jardim e a Ataraxia</span></h2>
-            <p>Vivendo em tempos conturbados, Epicuro construiu uma filosofia centrada no <strong>prazer sereno</strong> e na <strong>amizade</strong>. Seu pensamento é resumido no <span class="text-highlight">Tetraphármakon</span> (quádruplo remédio):</p>
-            
             <div class="quote-block">
-                <p style="font-size:1.1rem; text-align:center">
-                ⚡ <strong>Não há o que temer quanto aos deuses.</strong><br>
-                ⚡ <strong>Não há nada a temer quanto à morte.</strong><br>
-                ⚡ <strong>Pode-se alcançar a felicidade.</strong><br>
-                ⚡ <strong>Pode-se suportar a dor.</strong>
-                </p>
+                <p style="font-size:1rem; text-align:center">⚡ <strong>Não há o que temer quanto aos deuses.</strong><br>⚡ <strong>Não há nada a temer quanto à morte.</strong><br>⚡ <strong>Pode-se alcançar a felicidade.</strong><br>⚡ <strong>Pode-se suportar a dor.</strong></p>
             </div>
-
             <div class="info-box">
                 <h3>📝 Classificação dos Desejos (Epicuro)</h3>
                 <ul style="margin-left:24px; line-height:1.8">
-                    <li><strong>Naturais e necessários</strong>: alimentação, abrigo, segurança — devem ser atendidos.</li>
-                    <li><strong>Naturais e não necessários</strong>: luxo, variedade de alimentos — devem ser controlados.</li>
-                    <li><strong>Nem naturais nem necessários</strong>: fama, riqueza excessiva, poder — devem ser eliminados.</li>
+                    <li><strong>Naturais e necessários</strong>: alimentação, abrigo, segurança</li>
+                    <li><strong>Naturais e não necessários</strong>: luxo, variedade de alimentos</li>
+                    <li><strong>Nem naturais nem necessários</strong>: fama, riqueza excessiva, poder</li>
                 </ul>
             </div>
-
-            <div class="quote-block">
-                <p>"Quando dizemos que o prazer é o fim, não queremos referir-nos aos prazeres dos intemperantes [...] mas ao prazer de nos acharmos livres de sofrimento do corpo e de perturbações da alma."</p>
-                <div class="quote-author">— Epicuro, Carta a Meneceu</div>
-            </div>
-
-            <p><strong>A amizade (philia)</strong> é central: "De todas as coisas que nos oferece a sabedoria para a felicidade de toda a vida, a maior é a aquisição da amizade." O Jardim de Epicuro era aberto a <strong>mulheres, escravos e estrangeiros</strong> — revolucionário para a época.</p>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 7: ÉTICA MODERNA (HOBBES E ROUSSEAU) -->
-        <!-- ============================================ -->
+        <!-- ÉTICA MODERNA -->
         <div class="content-section" id="modernos">
             <h2>⚔️ Ética Moderna <span class="topic-badge">Hobbes e Rousseau</span></h2>
-            <p>A tradição <strong>contratualista</strong> rompe com a perspectiva grega: a sociedade política não é natural, mas resultado de uma <strong>escolha racional</strong>.</p>
-
             <h3>📜 Thomas Hobbes (1588-1679)</h3>
             <div class="quote-block">
                 <p>"Se dois homens desejam a mesma coisa, ao mesmo tempo em que é impossível ela ser gozada por ambos, eles se tornam inimigos."</p>
-                <div class="quote-author">— Hobbes, Leviatã, Capítulo XIII</div>
+                <div class="quote-author">— Hobbes, Leviatã</div>
             </div>
-            <p>No estado de natureza, há <strong>guerra de todos contra todos</strong> (<em>bellum omnium contra omnes</em>). A única solução para garantir a paz é instituir um <strong>Estado soberano absoluto</strong>, ao qual os indivíduos transferem seus direitos naturais.</p>
-
             <h3>🌿 Jean-Jacques Rousseau (1712-1778)</h3>
             <div class="quote-block">
                 <p>"O primeiro que, tendo cercado um terreno, se lembrou de dizer: Isto é meu, foi o verdadeiro fundador da sociedade civil."</p>
                 <div class="quote-author">— Rousseau, Discurso sobre a origem da desigualdade</div>
             </div>
-            <p>Diferentemente de Hobbes, Rousseau considera que o <strong>homem nasce bom</strong>, e a sociedade o corrompe. Propõe um modelo de <strong>soberania popular</strong> baseado na <strong>vontade geral</strong>, onde o povo é o verdadeiro soberano.</p>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 8: TABELA COMPARATIVA -->
-        <!-- ============================================ -->
+        <!-- TABELA COMPARATIVA -->
         <div class="content-section" id="comparacao">
             <h2>📊 Comparação entre os Filósofos</h2>
             <table class="comparison-table">
-                <thead>
-                    <tr><th>Filósofo</th><th>Natureza Humana</th><th>Bem Supremo</th><th>Virtude Principal</th><th>Relação com a Política</th></tr>
-                </thead>
+                <thead><tr><th>Filósofo</th><th>Natureza Humana</th><th>Bem Supremo</th><th>Virtude Principal</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>Sócrates</strong></td><td>Alma racional</td><td>Conhecimento de si / Sabedoria</td><td>Autoconhecimento</td><td>Missão filosófica de educar</td></tr>
-                    <tr><td><strong>Aristóteles</strong></td><td>Animal político (zoon politikon)</td><td>Eudaimonia (florescimento)</td><td>Phronesis (prudência)</td><td>O homem só é pleno na pólis</td></tr>
-                    <tr><td><strong>Epicuro</strong></td><td>Busca do prazer e fuga da dor</td><td>Ataraxia (imperturbabilidade)</td><td>Moderação / Amizade</td><td>"Vive ignorado" — afastamento</td></tr>
-                    <tr><td><strong>Hobbes</strong></td><td>Egoísta, movido pelo medo</td><td>Autoconservação / Paz</td><td>Razão calculadora</td><td>Estado soberano absoluto</td></tr>
-                    <tr><td><strong>Rousseau</strong></td><td>Naturalmente bom</td><td>Liberdade / Igualdade</td><td>Vontade geral</td><td>Soberania popular</td></tr>
+                    <tr><td><strong>Sócrates</strong></td><td>Alma racional</td><td>Conhecimento de si</td><td>Autoconhecimento</td></tr>
+                    <tr><td><strong>Aristóteles</strong></td><td>Animal político</td><td>Eudaimonia</td><td>Phronesis</td></tr>
+                    <tr><td><strong>Epicuro</strong></td><td>Busca do prazer</td><td>Ataraxia</td><td>Moderação</td></tr>
+                    <tr><td><strong>Hobbes</strong></td><td>Egoísta</td><td>Autoconservação</td><td>Razão calculadora</td></tr>
+                    <tr><td><strong>Rousseau</strong></td><td>Naturalmente bom</td><td>Liberdade</td><td>Vontade geral</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 9: RECURSOS E LEITURAS -->
-        <!-- ============================================ -->
+        <!-- RECURSOS -->
         <div class="content-section" id="recursos">
             <h2>📚 Recursos e Leituras Recomendadas</h2>
-            
-            <h3>📖 Textos Fundamentais (PDF)</h3>
             <div>
                 <a href="https://acervo.sead.ufes.br/arquivos/etica2.pdf" target="_blank" class="resource-link">📄 Ética a Nicômaco (UFES)</a>
                 <a href="https://fernandonogueiracosta.wordpress.com/wp-content/uploads/2015/01/epicuro-carta-sobre-a-felicidade.pdf" target="_blank" class="resource-link">📄 Epicuro - Carta a Meneceu</a>
                 <a href="https://www.ebooksbrasil.org/adobeebook/contratosocial.pdf" target="_blank" class="resource-link">📄 Rousseau - Do Contrato Social</a>
                 <a href="https://www.dhnet.org.br/direitos/anthist/marcos/hdh_thomas_hobbes_leviatan.pdf" target="_blank" class="resource-link">📄 Hobbes - Leviatã</a>
             </div>
-
-            <h3>🎥 Vídeos Complementares</h3>
-            <div>
-                <a href="https://www.youtube.com/watch?v=eWCf81TXoUE" target="_blank" class="resource-link">📺 Resumo Ética a Nicômaco (YouTube)</a>
-            </div>
         </div>
 
-        <!-- ============================================ -->
-        <!-- SEÇÃO 10: EXERCÍCIO DE REFLEXÃO FINAL -->
-        <!-- ============================================ -->
+        <!-- REFLEXÃO -->
         <div class="content-section" id="reflexao">
             <h2>💭 Para Refletir e Praticar</h2>
             <div class="info-box-green">
                 <h3>📱 Exercício: Sua Filosofia Digital</h3>
-                <p>Com base nos filósofos estudados, reflita:</p>
                 <ol style="margin-left:24px; margin-top:12px; line-height:1.8">
-                    <li><strong>Perspectiva Aristotélica:</strong> Em que situações do seu dia a dia digital você encontra o "Justo Meio" entre o isolamento e a hiperconectividade?</li>
-                    <li><strong>Perspectiva Epicurista:</strong> Quais desejos digitais (notificações, likes, scroll infinito) são "naturais e necessários" e quais são apenas "vãs opiniões"?</li>
-                    <li><strong>Perspectiva Hobbesiana:</strong> Como o medo de "ficar de fora" (FOMO) influencia seu comportamento nas redes sociais?</li>
-                    <li><strong>Perspectiva Rousseauana:</strong> A tecnologia nos torna mais livres ou mais escravos? O que seria uma "vontade geral" para o uso ético da internet?</li>
+                    <li>Em que situações do seu dia a dia digital você encontra o "Justo Meio"?</li>
+                    <li>Quais desejos digitais são "naturais e necessários" e quais são apenas "vãs opiniões"?</li>
+                    <li>Como o medo de "ficar de fora" (FOMO) influencia seu comportamento?</li>
+                    <li>A tecnologia nos torna mais livres ou mais escravos?</li>
                 </ol>
-                <p style="margin-top:16px">Registre suas respostas no <strong>Fórum de Atividades</strong> e compartilhe com seus colegas!</p>
+                <p style="margin-top:16px">Registre suas respostas no <strong>Fórum de Atividades</strong>!</p>
             </div>
         </div>
     </main>
 
     <footer class="footer">
         <p>Universidade Federal do ABC | Licença Creative Commons BY-NC-SA | Luciano Rodrigues Pereira</p>
-        <p style="margin-top:8px; font-size:0.7rem">Conteúdo baseado em: Ética a Nicômaco (Aristóteles), Carta a Meneceu (Epicuro), Leviatã (Hobbes) e Do Contrato Social (Rousseau)</p>
     </footer>
 
     <script>
-        // IDs dos vídeos
         const VIDEOS = ['video1', 'video2', 'video3'];
         
-        // Função para marcar vídeo como assistido
         function marcarAssistido(videoId) {
             let assistidos = JSON.parse(localStorage.getItem('videos_assistidos') || '[]');
             
@@ -656,55 +594,45 @@
                 assistidos.push(videoId);
                 localStorage.setItem('videos_assistidos', JSON.stringify(assistidos));
                 
-                // Feedback visual
-                const btn = document.getElementById(`btn${videoId.charAt(0).toUpperCase() + videoId.slice(1)}`);
+                // Atualizar botão visualmente
+                const btnMap = {'video1': 'btnVideo1', 'video2': 'btnVideo2', 'video3': 'btnVideo3'};
+                const btn = document.getElementById(btnMap[videoId]);
                 if (btn) {
                     btn.classList.add('completed');
-                    btn.innerHTML = '✓ Assistido';
-                    btn.disabled = true;
+                    btn.innerHTML = '✅ Assistido';
                 }
                 
                 atualizarProgresso();
-                alert('✓ Vídeo marcado como assistido! Progresso salvo no seu perfil.');
+                alert('✓ Vídeo marcado como assistido! Progresso salvo.');
             } else {
                 alert('Este vídeo já foi marcado anteriormente.');
             }
         }
         
-        // Função para atualizar o progresso dos vídeos
         function atualizarProgresso() {
             let assistidos = JSON.parse(localStorage.getItem('videos_assistidos') || '[]');
             const totalVideos = VIDEOS.length;
             const assistidosCount = assistidos.length;
             const percentual = Math.round((assistidosCount / totalVideos) * 100);
             
-            // Atualizar badge do cabeçalho
             const progressBadge = document.getElementById('progressBadge');
-            if (progressBadge) {
-                progressBadge.innerHTML = `${percentual}%`;
-            }
+            if (progressBadge) progressBadge.innerHTML = `${percentual}%`;
             
-            // Atualizar texto de progresso
             const videosProgressSpan = document.getElementById('videosProgress');
-            if (videosProgressSpan) {
-                videosProgressSpan.innerHTML = `${assistidosCount}`;
-            }
+            if (videosProgressSpan) videosProgressSpan.innerHTML = `${assistidosCount}`;
             
             // Marcar botões já assistidos
             VIDEOS.forEach(videoId => {
-                const btn = document.getElementById(`btn${videoId.charAt(0).toUpperCase() + videoId.slice(1)}`);
+                const btnMap = {'video1': 'btnVideo1', 'video2': 'btnVideo2', 'video3': 'btnVideo3'};
+                const btn = document.getElementById(btnMap[videoId]);
                 if (btn && assistidos.includes(videoId)) {
                     btn.classList.add('completed');
-                    btn.innerHTML = '✓ Assistido';
-                    btn.disabled = true;
+                    btn.innerHTML = '✅ Assistido';
                 }
             });
         }
         
-        // Inicializar ao carregar a página
-        document.addEventListener('DOMContentLoaded', function() {
-            atualizarProgresso();
-        });
+        document.addEventListener('DOMContentLoaded', atualizarProgresso);
     </script>
 </body>
 </html>
