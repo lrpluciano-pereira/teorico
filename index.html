@@ -77,7 +77,18 @@
         }
 
         .user-info {
-            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .progress-badge {
+            background: var(--gold-dark);
+            color: var(--bg-dark);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
         }
 
         /* CONTEÚDO */
@@ -217,7 +228,17 @@
             transition: all 0.2s;
         }
 
-        .btn-mark-read:hover {
+        .btn-mark-read.completed {
+            background: var(--success);
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .btn-mark-read.completed:hover {
+            transform: none;
+        }
+
+        .btn-mark-read:hover:not(.completed) {
             background: #e6c453;
             transform: scale(0.98);
         }
@@ -263,6 +284,19 @@
         .resource-link:hover {
             background: var(--link);
             color: var(--bg-dark);
+        }
+
+        .progress-videos {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .progress-videos span {
+            color: var(--gold);
+            font-weight: bold;
         }
 
         .footer {
@@ -313,6 +347,9 @@
             h1 {
                 font-size: 1.6rem;
             }
+            .content-section h2 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -331,6 +368,7 @@
                 <a href="https://lrpluciano-pereira.github.io/forum/">💬 Atividades</a>
             </div>
             <div class="user-info">
+                <span class="progress-badge" id="progressBadge">0%</span>
                 <span>👤 Aluno</span>
             </div>
         </div>
@@ -345,6 +383,7 @@
             <h3>📑 Navegue pelo conteúdo</h3>
             <div class="toc-grid">
                 <a href="#video-principal">🎬 Vídeo Principal</a>
+                <a href="#videos-complementares">🎬 Vídeos Complementares</a>
                 <a href="#socrates">🏛️ Sócrates</a>
                 <a href="#aristoteles">📖 Aristóteles</a>
                 <a href="#justo-meio">⚖️ Justo Meio</a>
@@ -375,13 +414,13 @@
                 </iframe>
             </div>
             <p><strong>Sinopse:</strong> Nesta aula, o Prof. Clóvis de Barros Filho introduz os conceitos fundamentais da ética aristotélica: eudaimonia (felicidade/florescimento humano), virtude (areté) e a importância do caráter para uma vida que vale a pena ser vivida.</p>
-            <button class="btn-mark-read" onclick="marcarAssistido('video1')">✓ Marcar como assistido</button>
+            <button class="btn-mark-read" id="btnVideo1" data-video="video1" onclick="marcarAssistido('video1')">✓ Marcar como assistido</button>
         </div>
 
         <!-- ============================================ -->
         <!-- SEÇÃO 2: VÍDEOS COMPLEMENTARES -->
         <!-- ============================================ -->
-        <div class="content-section">
+        <div class="content-section" id="videos-complementares">
             <h2>🎬 Vídeos Complementares <span class="topic-badge">Clóvis de Barros Filho</span></h2>
             
             <h3>Aula 02 - Sócrates, Platão e Aristóteles</h3>
@@ -397,7 +436,7 @@
                 </iframe>
             </div>
             <p><strong>Sinopse:</strong> Nesta aula, o Prof. Clóvis apresenta a filosofia moral grega: a maiêutica socrática, a teoria das ideias de Platão e a ética das virtudes de Aristóteles.</p>
-            <button class="btn-mark-read" onclick="marcarAssistido('video2')">✓ Marcar como assistido</button>
+            <button class="btn-mark-read" id="btnVideo2" data-video="video2" onclick="marcarAssistido('video2')">✓ Marcar como assistido</button>
 
             <h3 style="margin-top: 32px;">Aula 03 - Epicurismo e Estoicismo</h3>
             <div class="video-container">
@@ -412,7 +451,12 @@
                 </iframe>
             </div>
             <p><strong>Sinopse:</strong> Epicurismo e estoicismo: duas escolas helenísticas que oferecem caminhos distintos para a felicidade e a tranquilidade da alma.</p>
-            <button class="btn-mark-read" onclick="marcarAssistido('video3')">✓ Marcar como assistido</button>
+            <button class="btn-mark-read" id="btnVideo3" data-video="video3" onclick="marcarAssistido('video3')">✓ Marcar como assistido</button>
+
+            <!-- Barra de progresso dos vídeos -->
+            <div class="progress-videos">
+                📊 <strong>Seu progresso:</strong> <span id="videosProgress">0</span> de 3 vídeos assistidos
+            </div>
         </div>
 
         <!-- ============================================ -->
@@ -433,6 +477,8 @@
                 <h3>💡 Método Socrático</h3>
                 <p>Sócrates não se apresentava como professor. Perguntava, não respondia. Introduziu o <strong>diálogo</strong> como forma de busca da verdade, utilizando a <strong>ironia</strong> (fazer o interlocutor reconhecer sua ignorância) e a <strong>maiêutica</strong> (arte de "dar à luz" ideias verdadeiras).</p>
             </div>
+
+            <p><strong>Diferença entre Sócrates e os Sofistas:</strong> Enquanto os sofistas eram céticos e ensinavam técnicas de persuasão mediante pagamento, Sócrates acreditava na existência da verdade e a buscava gratuitamente, em diálogo aberto com todos, incluindo escravos e mulheres — o que era revolucionário para a época.</p>
         </div>
 
         <!-- ============================================ -->
@@ -599,31 +645,66 @@
     </footer>
 
     <script>
+        // IDs dos vídeos
+        const VIDEOS = ['video1', 'video2', 'video3'];
+        
+        // Função para marcar vídeo como assistido
         function marcarAssistido(videoId) {
             let assistidos = JSON.parse(localStorage.getItem('videos_assistidos') || '[]');
-            if(!assistidos.includes(videoId)) {
+            
+            if (!assistidos.includes(videoId)) {
                 assistidos.push(videoId);
                 localStorage.setItem('videos_assistidos', JSON.stringify(assistidos));
+                
+                // Feedback visual
+                const btn = document.getElementById(`btn${videoId.charAt(0).toUpperCase() + videoId.slice(1)}`);
+                if (btn) {
+                    btn.classList.add('completed');
+                    btn.innerHTML = '✓ Assistido';
+                    btn.disabled = true;
+                }
+                
+                atualizarProgresso();
                 alert('✓ Vídeo marcado como assistido! Progresso salvo no seu perfil.');
-                const btn = event.target;
-                btn.style.opacity = '0.7';
-                btn.innerText = '✓ Assistido';
             } else {
                 alert('Este vídeo já foi marcado anteriormente.');
             }
         }
-
-        function carregarAssistidos() {
+        
+        // Função para atualizar o progresso dos vídeos
+        function atualizarProgresso() {
             let assistidos = JSON.parse(localStorage.getItem('videos_assistidos') || '[]');
-            const botoes = document.querySelectorAll('.btn-mark-read');
-            botoes.forEach((btn, idx) => {
-                if(assistidos.includes(`video${idx+1}`)) {
-                    btn.style.opacity = '0.7';
-                    btn.innerText = '✓ Assistido';
+            const totalVideos = VIDEOS.length;
+            const assistidosCount = assistidos.length;
+            const percentual = Math.round((assistidosCount / totalVideos) * 100);
+            
+            // Atualizar badge do cabeçalho
+            const progressBadge = document.getElementById('progressBadge');
+            if (progressBadge) {
+                progressBadge.innerHTML = `${percentual}%`;
+            }
+            
+            // Atualizar texto de progresso
+            const videosProgressSpan = document.getElementById('videosProgress');
+            if (videosProgressSpan) {
+                videosProgressSpan.innerHTML = `${assistidosCount}`;
+            }
+            
+            // Marcar botões já assistidos
+            VIDEOS.forEach(videoId => {
+                const btn = document.getElementById(`btn${videoId.charAt(0).toUpperCase() + videoId.slice(1)}`);
+                if (btn && assistidos.includes(videoId)) {
+                    btn.classList.add('completed');
+                    btn.innerHTML = '✓ Assistido';
+                    btn.disabled = true;
                 }
             });
         }
-        carregarAssistidos();
+        
+        // Inicializar ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarProgresso();
+        });
     </script>
 </body>
 </html>
