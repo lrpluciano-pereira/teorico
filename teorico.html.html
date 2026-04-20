@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Teórico | Ética Aristotélica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a1628;
+            --bg-card: #0f1a2f;
+            --bg-light: #16213e;
+            --gold: #d4af37;
+            --gold-dark: #b8942e;
+            --text-primary: #ffffff;
+            --text-secondary: #9aa7b9;
+            --border: #1e2a44;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .navbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            min-height: calc(100vh - 160px);
+        }
+
+        .content-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .content-section h2 {
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 24px 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .quote-block {
+            background: rgba(212,175,55,0.1);
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .virtue-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .virtue-table th, .virtue-table td {
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .virtue-table th {
+            background: var(--gold-dark);
+            color: var(--bg-dark);
+        }
+
+        .btn-mark-read {
+            background: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: transform 0.2s;
+        }
+
+        .btn-mark-read:hover {
+            transform: scale(0.98);
+        }
+
+        .footer {
+            background: var(--bg-card);
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .virtue-table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">⚖️ Ética Digital</div>
+            <div class="nav-links">
+                <a href="index.html">🏠 Início</a>
+                <a href="teorico.html" class="active">📚 Módulo Teórico</a>
+                <a href="simulador.html">🎮 Simulador</a>
+                <a href="forum.html">💬 Atividades</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>📚 Módulo Teórico</h1>
+        <p style="margin-bottom: 32px;">Estude os fundamentos da Ética Aristotélica e sua aplicação no cotidiano digital.</p>
+
+        <div class="content-section">
+            <h2>🎬 Vídeo 1: Introdução à Ética Aristotélica</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="Vídeo sobre Ética Aristotélica" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p><strong>Sinopse:</strong> Neste vídeo, o Prof. Clóvis de Barros Filho introduz os conceitos de eudaimonia, virtude e o justo meio.</p>
+            <button class="btn-mark-read" onclick="marcarAssistido('video1')">✓ Marcar como assistido</button>
+        </div>
+
+        <div class="content-section">
+            <h2>📖 O Conceito de Justo Meio (Mesotes)</h2>
+            <p>Na <strong>Ética a Nicômaco</strong>, Aristóteles afirma que a virtude é um meio-termo entre dois vícios: um por excesso e outro por falta. Aplicado ao contexto digital:</p>
+            
+            <div class="quote-block">
+                <p>“A virtude é uma disposição de caráter relacionada com a escolha, consistindo num meio-termo relativo a nós, determinado pela razão.” — Aristóteles</p>
+            </div>
+
+            <table class="virtue-table">
+                <thead>
+                    <tr><th>Vício por Falta</th><th>Virtude (Justo Meio)</th><th>Vício por Excesso</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Isolamento digital</td><td>Uso equilibrado da tecnologia</td><td>Hiperconectividade</td></tr>
+                    <tr><td>Ignorar notificações importantes</td><td>Responder no momento adequado</td><td>Responder instantaneamente sempre</td></tr>
+                    <tr><td>Não compartilhar nada</td><td>Compartilhar com moderação</td><td>Exposição excessiva da vida</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>🎬 Vídeo 2: Phronesis - A Sabedoria Prática</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder2" title="Phronesis" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p><strong>Sinopse:</strong> Como desenvolver a sabedoria prática para tomar melhores decisões no dia a dia digital.</p>
+            <button class="btn-mark-read" onclick="marcarAssistido('video2')">✓ Marcar como assistido</button>
+        </div>
+
+        <div class="content-section">
+            <h2>📚 Leituras Recomendadas</h2>
+            <ul style="margin-left: 24px; line-height: 1.8;">
+                <li>ARISTÓTELES. <em>Ética a Nicômaco</em>. Livro II (sobre a virtude).</li>
+                <li>EPICURO. <em>Carta a Meneceu</em> - (contraponto sobre prazeres).</li>
+                <li>Clóvis de Barros Filho - <em>A Vida que Vale a Pena Ser Vivida</em> (playlist no YouTube).</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Universidade Federal do ABC | Licença Creative Commons BY-NC-SA | Luciano Rodrigues Pereira</p>
+    </footer>
+
+    <script>
+        function marcarAssistido(videoId) {
+            let assistidos = JSON.parse(localStorage.getItem('videos_assistidos') || '[]');
+            if(!assistidos.includes(videoId)) {
+                assistidos.push(videoId);
+                localStorage.setItem('videos_assistidos', JSON.stringify(assistidos));
+                alert('✓ Vídeo marcado como assistido! Progresso salvo.');
+            } else {
+                alert('Este vídeo já foi marcado anteriormente.');
+            }
+        }
+    </script>
+</body>
+</html>
