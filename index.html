@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo Teórico | Ética Aristotélica</title>
+    <title>Módulo Teórico | Ética Aristotélica no Cotidiano Digital</title>
     <style>
         * {
             margin: 0;
@@ -29,6 +29,7 @@
             line-height: 1.5;
         }
 
+        /* ===== CABEÇALHO PADRÃO ===== */
         .navbar {
             background: var(--bg-card);
             border-bottom: 1px solid var(--border);
@@ -52,6 +53,11 @@
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--gold);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            margin-right: 8px;
         }
 
         .nav-links {
@@ -67,10 +73,20 @@
             padding: 8px 0;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover {
             color: var(--gold);
             border-bottom: 2px solid var(--gold);
         }
+
+        .nav-links a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .user-info {
+            color: var(--text-secondary);
+        }
+        /* ===== FIM CABEÇALHO ===== */
 
         .container {
             max-width: 1000px;
@@ -180,14 +196,21 @@
     </style>
 </head>
 <body>
+    <!-- CABEÇALHO PADRÃO -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">⚖️ Ética Digital</div>
+            <a href="https://lrpluciano-pereira.github.io/index/" class="logo">
+                <span class="logo-icon">⚖️</span>
+                <span>Ética Digital</span>
+            </a>
             <div class="nav-links">
                 <a href="https://lrpluciano-pereira.github.io/index/">🏠 Início</a>
                 <a href="https://lrpluciano-pereira.github.io/teorico/" class="active">📚 Módulo Teórico</a>
                 <a href="https://lrpluciano-pereira.github.io/simulador/">🎮 Simulador</a>
                 <a href="https://lrpluciano-pereira.github.io/forum/">💬 Atividades</a>
+            </div>
+            <div class="user-info">
+                <span>👤 Aluno</span>
             </div>
         </div>
     </nav>
